@@ -4,7 +4,7 @@
 Steps to configure a [Xubuntu](https://xubuntu.org/) 16.04 virtual machine to work with Python and C++ and other tools. The base environment will be composed by:
 
 - C++ (g++)
-<!---- Cling--->
+<!---- Cling --->
 - Python (Anaconda)
 - Thonny
 - Visual Studio Code
@@ -97,7 +97,7 @@ After the installation is finished, click on the CD symbol on the desktop and cl
 
 On your host machine, create a folder called "linux" anywhere you want, this folder will be used to share files between the host machine and the virtual machine.
 
-[Configure a shared folder](https://www.howtogeek.com/187703/how-to-access-folders-on-your-host-machine-from-an-ubuntu-virtual-machine-in-virtualbox/) on VirtualBox, clicking on the `Device -> Shared Folders` menu. Point to the folder you have created previously (on your host machine) and check the options to auto mount and make permanent the sharing. Restart the machine to the changes to take effect and create a symbolic link inside the user's home folder.
+[Configure a shared folder](https://www.howtogeek.com/187703/how-to-access-folders-on-your-host-machine-from-an-ubuntu-virtual-machine-in-virtualbox/) on VirtualBox, clicking on the `Device -> Shared Folders` menu. Point to the folder you have created previously (on your host machine) and check the options to auto mount and make the sharing permanent . Restart the machine to the changes to take effect and create a symbolic link inside the user's home folder.
 
 ```sh
 ln --symbolic /media/sf_shared/ $HOME/windows
@@ -105,7 +105,9 @@ ln --symbolic /media/sf_shared/ $HOME/windows
 
 The `windows` folder on your `home` folder is now linked to your host machine `linux` folder. You can use this folder to exchenge files between the two.
 
-## Install the programming packages
+## Install the programming packages and additional software
+
+To install the packages, you can use the commands here, or use the links to go to the software page and try to search installations instructions there (recommended). 
 
 - [FreeCAD](https://www.freecadweb.org/)
 ```sh
@@ -176,9 +178,9 @@ Create a new `conda` environment on a new terminal and install scientific Python
 ```sh
 $HOME/apps/anaconda3/bin/conda create --name=notebook --yes
 source $HOME/apps/anaconda3/bin/activate notebook
-$HOME/apps/anaconda3/bin/conda install numpy scipy matplotlib --yes
-$HOME/apps/anaconda3/bin/conda install sympy pandas seaborn --yes
-$HOME/apps/anaconda3/bin/conda install jupyter --yes
+$HOME/apps/anaconda3/envs/notebook/bin/conda install numpy scipy matplotlib --yes
+$HOME/apps/anaconda3/envs/notebook/bin/conda install sympy pandas seaborn --yes
+$HOME/apps/anaconda3/envs/notebook/bin/conda install jupyter --yes
 ```
 <!---
 [Configure](https://github.com/root-project/cling/tree/master/tools/Jupyter) the `Cling` interpreter to integrate with `Jupyter notebook`
@@ -189,7 +191,7 @@ $HOME/apps/anaconda3/envs/notebook/bin/jupyter-kernelspec install --user $HOME/a
 $HOME/apps/anaconda3/envs/notebook/bin/jupyter-kernelspec install --user $HOME/apps/cling_2017-10-11_ubuntu16/share/cling/Jupyter/kernel/cling-cpp17
 source $HOME/apps/anaconda3/envs/notebook/bin/deactivate
 ```
---->
+
 
 - Remarkable
 ```sh
@@ -197,5 +199,9 @@ wget --directory-prefix=$HOME/Downloads https://remarkableapp.github.io/files/re
 sudo dpkg -i $HOME/Downloads/remarkable_1.87_all.deb
 sudo apt-get install -f
 ```
+--->
 
+Done, restart the virtual machine (just to be sure) and you can use it (and customize it, give it a try).
+
+Cheers.
 > Written with [StackEdit](https://stackedit.io/).
